@@ -1,15 +1,19 @@
 package project.techTalent.Network.respositories.Implementation;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import project.techTalent.Network.entities.User;
 import project.techTalent.Network.payloads.UserDto;
 import project.techTalent.Network.respositories.UserRepo;
 import project.techTalent.Network.services.UserService;
 import project.techTalent.Network.exceptions.*;
+
+@Service
 public class UserServiceImpl implements UserService 
 {
 	@Autowired
