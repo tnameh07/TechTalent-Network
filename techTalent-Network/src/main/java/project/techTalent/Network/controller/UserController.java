@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import project.techTalent.Network.payloads.ApiResponse;
 import project.techTalent.Network.payloads.UserDto;
 import project.techTalent.Network.services.UserService;
@@ -29,7 +30,7 @@ public class UserController
 	
 	//Post - create user
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto)
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto)
 	{
 		UserDto createdUserDto = this.userService.createUser(userDto);
 		return new ResponseEntity<>(createdUserDto , HttpStatus.CREATED);
@@ -38,7 +39,7 @@ public class UserController
 	//Put - update user
 	
 @PutMapping("/{userId}") 
-	public ResponseEntity<UserDto> updateUser(@RequestBody  UserDto userDto, @PathVariable("userId") Integer uId)
+	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody  UserDto userDto, @PathVariable("userId") Integer uId)
 	{
 		UserDto updatedUser = this.userService.updateUser(userDto, uId);
 		return  ResponseEntity.ok(updatedUser);
