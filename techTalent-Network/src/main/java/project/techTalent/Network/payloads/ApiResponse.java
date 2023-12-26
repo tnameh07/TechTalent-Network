@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+// For showing customized message at runtime exception, this class created
 public class ApiResponse
 {
 	
