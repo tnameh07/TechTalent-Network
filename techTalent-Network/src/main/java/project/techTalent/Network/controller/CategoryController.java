@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import project.techTalent.Network.payloads.ApiResponse;
 import project.techTalent.Network.payloads.CategoryDto;
 import project.techTalent.Network.payloads.UserDto;
@@ -27,7 +28,7 @@ public class CategoryController
 	private CategoryService categoryService;
      //create
 	@PostMapping("/")
-	public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto categoryDto)
+	public ResponseEntity<CategoryDto> createCategory( @Valid  @RequestBody CategoryDto categoryDto)
 	{
 		CategoryDto categories =this.categoryService.createCategory(categoryDto);
 		return new ResponseEntity<CategoryDto>(categories , HttpStatus.CREATED);
@@ -35,7 +36,7 @@ public class CategoryController
 	}
 	//update
 	@PutMapping("/{categoryId}")
-	public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto ,@PathVariable Integer categoryId)
+	public ResponseEntity<CategoryDto> updateCategory( @Valid  @RequestBody CategoryDto categoryDto ,@PathVariable Integer categoryId)
 	{
 		CategoryDto categories = this.categoryService.updateCategory(categoryDto, categoryId);
 		return new ResponseEntity<CategoryDto>(categories , HttpStatus.OK );	
