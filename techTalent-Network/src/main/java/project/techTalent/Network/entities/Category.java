@@ -32,7 +32,7 @@ public class Category
 	@Column(name="description")
 	private String categoryDescription;
 	
-	@OneToMany(mappedBy = "Category", cascade= CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "category", cascade= CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Post> posts = new ArrayList<>();
 	
 	
