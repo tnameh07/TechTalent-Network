@@ -5,5 +5,6 @@ Blog Application - Tech-Talent Network
 • Managed custom and global exceptions to ensure robust error handling.
 
 DataBase Schema:
-<img href="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" >
+<br>
+
 <img src="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" alt="1neha23" />
