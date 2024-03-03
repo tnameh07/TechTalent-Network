@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="E:\TechTalent Network"/>
 			<item value="E:\TechTalent Network\techTalent-Network"/>
 		</list>
 		<list key="projectNameTemplate">
