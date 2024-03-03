@@ -3,3 +3,6 @@ Blog Application - Tech-Talent Network
 • Performed integration testing to evaluate the seamless integration of various modules within the application.
 • Implemented data validation using Spring Validator for enhanced data integrity .
 • Managed custom and global exceptions to ensure robust error handling.
+
+DataBase Schema:
+<img href="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" >
