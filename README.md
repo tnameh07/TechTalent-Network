@@ -6,3 +6,4 @@ Blog Application - Tech-Talent Network
 
 DataBase Schema:
 <img href="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" >
+<img src="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" alt="1neha23" />
