@@ -17,3 +17,9 @@ DataBase Schema:
 <br>
 
 <img src="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/BlogDarabaseStructure.drawio.png" alt="1neha23" />
+<br>
+Designed Restful APIs
+<br>
+<img src="https://github.com/1Neha23/TechTalent-Network/blob/master/DatabaseSchema/APIs.PNG" alt="1neha23" />
+
+
