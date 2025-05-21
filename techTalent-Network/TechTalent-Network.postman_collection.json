@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890",
+		"name": "TechTalent Network API",
+		"description": "Collection for testing TechTalent Network API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"abc\",\n    \"about\": \"Software Developer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/users/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "users", ""]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe Updated\",\n    \"email\": \"john.updated@example.com\",\n    \"password\": \"abc\",\n    \"about\": \"Senior Software Developer\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/users/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "users", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:9090/api/users/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "users", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Single User",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:9090/api/users/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "users", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:9090/api/users/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "users", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryTitle\": \"Web Development\",\n    \"categoryDescription\": \"Posts about web development technologies\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/categories/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "categories", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryTitle\": \"Web Development Updated\",\n    \"categoryDescription\": \"Updated description for web development posts\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:9090/api/categories/",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "categories", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Single Category",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://localhost:9090/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "http://localhost:9090/api/categories/1",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "categories", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Getting Started with Spring Boot\",\n    \"content\": \"Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications.\",\n    \"imageName\": \"spring-boot.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/api/user/1/category/1/posts",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "9090",
+							"path": ["api", "user", "1", "category", "1", "posts"]
+						}
+					}
+				}
+			]
+		}
+	]
+} 

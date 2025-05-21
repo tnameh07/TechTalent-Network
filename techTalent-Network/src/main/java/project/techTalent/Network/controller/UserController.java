@@ -74,14 +74,4 @@ public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId)
 	return ResponseEntity.ok(this.userService.getUserById(userId));
 }
 
-
-
-
-
-	
-	
-	
-	
-	
-
 }
