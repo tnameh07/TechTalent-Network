@@ -33,15 +33,36 @@ public class UserServiceImpl implements UserService
 	@Override
 	public UserDto updateUser(UserDto userDto, Integer userId) {
 		User user = this.userRepo.findById(userId)
-				.orElseThrow( () -> new ResourceNotFoundException( "User" , "Id" , userId ));
-		user.setName(userDto.getName());
-		user.setEmail(userDto.getEmail());
-		user.setPassword(userDto.getPassword());
-		user.setAbout(userDto.getAbout());
+				.orElseThrow(() -> new ResourceNotFoundException("User", "Id", userId));
 		
-		User savedUser = this.userRepo.save(user);
-		UserDto userDto1 = this.usertoDto(savedUser);
-		return userDto1;
+		// Update only if the new value is not null and not empty
+		if (userDto.getName() != null && !userDto.getName().trim().isEmpty()) {
+			if (userDto.getName().length() < 4) {
+				throw new IllegalArgumentException("Username must be at least 4 characters long");
+			}
+			user.setName(userDto.getName());
+		}
+		
+		if (userDto.getEmail() != null && !userDto.getEmail().trim().isEmpty()) {
+			if (!userDto.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+				throw new IllegalArgumentException("Invalid email format");
+			}
+			user.setEmail(userDto.getEmail());
+		}
+		
+		if (userDto.getPassword() != null && !userDto.getPassword().trim().isEmpty()) {
+			if (userDto.getPassword().length() < 3 || userDto.getPassword().length() > 10) {
+				throw new IllegalArgumentException("Password must be between 3 and 10 characters");
+			}
+			user.setPassword(userDto.getPassword());
+		}
+		
+		if (userDto.getAbout() != null) {
+			user.setAbout(userDto.getAbout());
+		}
+		
+		User updatedUser = this.userRepo.save(user);
+		return this.usertoDto(updatedUser);
 	}
 
 	@Override
