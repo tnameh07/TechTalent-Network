@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import project.techTalent.Network.entities.User;
 import project.techTalent.Network.payloads.UserDto;
@@ -20,6 +21,8 @@ public class UserServiceImpl implements UserService
 	private UserRepo userRepo;
 	@Autowired
 	private ModelMapper modelMapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
 	@Override
@@ -54,7 +57,7 @@ public class UserServiceImpl implements UserService
 			if (userDto.getPassword().length() < 3 || userDto.getPassword().length() > 10) {
 				throw new IllegalArgumentException("Password must be between 3 and 10 characters");
 			}
-			user.setPassword(userDto.getPassword());
+			user.setPassword(this.passwordEncoder.encode(userDto.getPassword())); // Encode password
 		}
 		
 		if (userDto.getAbout() != null) {
@@ -86,29 +89,25 @@ public class UserServiceImpl implements UserService
 		this.userRepo.delete(user);
 		
 	}
-// converting dto to user first create object of that in which form you want to create
+
 	public User dtoToUser(UserDto userDto)
 	{
-		User user = this.modelMapper.map(userDto, User.class);
-//		user.setId(userDto.getId());
-//		user.setName(userDto.getName());
-//		user.setEmail(userDto.getEmail());
-//		user.setAbout(userDto.getAbout());
-//		user.setPassword(userDto.getPassword());
+		User user = new User();
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setAbout(userDto.getAbout());
+		user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
 		return user;
-		
 	}
 	
-	// converting  user to DTO
 	public UserDto usertoDto(User user)
 	{
-		UserDto  userDto = this.modelMapper.map(user, UserDto.class);
-//		userDto.setId(user.getId());
-//		userDto.setName(user.getName());
-//		userDto.setEmail(user.getEmail());
-//		userDto.setAbout(user.getAbout());
-//		userDto.setPassword(user.getPassword());
+		UserDto userDto = new UserDto();
+		userDto.setId(user.getId());
+		userDto.setName(user.getName());
+		userDto.setEmail(user.getEmail());
+		userDto.setAbout(user.getAbout());
+		// Don't set password in DTO for security
 		return userDto;	
 	}
-
 }
