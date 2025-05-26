@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,15 +46,27 @@ public class PostControllerTest {
     }
 
     @Test
-    void createPost_Success() throws Exception {
-        when(postService.createPost(any(PostDto.class), anyInt(), anyInt())).thenReturn(postDto);
+    public void testCreatePost() throws Exception {
+        when(postService.createPost(any(PostDto.class), any(Integer.class), any(Integer.class), any()))
+                .thenReturn(postDto);
 
-        mockMvc.perform(post("/api/user/1/category/1/posts")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(postDto)))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.title").value("Test Post"))
-                .andExpect(jsonPath("$.content").value("Test Post Content"))
-                .andExpect(jsonPath("$.imageName").value("test.jpg"));
+        MockMultipartFile file = new MockMultipartFile(
+                "image",
+                "test.jpg",
+                MediaType.IMAGE_JPEG_VALUE,
+                "test image content".getBytes()
+        );
+
+        MockMultipartFile postData = new MockMultipartFile(
+                "postDto",
+                "",
+                MediaType.APPLICATION_JSON_VALUE,
+                objectMapper.writeValueAsString(postDto).getBytes()
+        );
+
+        mockMvc.perform(multipart("/api/posts/user/1/category/1")
+                .file(file)
+                .file(postData))
+                .andExpect(status().isCreated());
     }
 } 

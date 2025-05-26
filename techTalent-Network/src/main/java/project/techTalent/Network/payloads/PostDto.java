@@ -1,8 +1,7 @@
 package project.techTalent.Network.payloads;
 
 import java.util.Date;
-
-
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +12,9 @@ import project.techTalent.Network.entities.User;
 @NoArgsConstructor
 public class PostDto
 {
+	private Integer postId;
+	
+	@Size(min = 3, message = "Title must be at least 3 characters long")
 	private String title;
 	
 	private String content;
